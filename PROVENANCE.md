@@ -93,6 +93,6 @@ No collaborator contributions, upstream fork lineage, or third-party asset right
 
 The curated portfolio copy uses Apache-2.0. The canonical license text is included at `LICENSE`, and `pyproject.toml` declares `Apache-2.0`. This license applies to the curated FINANCEBOT copy; named third-party dependencies and services retain their own licenses and terms.
 
-Public repository publication was authorized on 2026-07-23. No deployment, broker connection, live order, prospective activation, or communication of financial expectations was authorized.
+Public repository publication was authorized on 2026-07-23 and completed on 2026-07-24 at <https://github.com/PPDEGRET/financebot-agent-evaluation>. No deployment, broker connection, live order, prospective activation, or communication of financial expectations was authorized.
 
-Status after staged-file review: **ready for public repository publication**, with the historical result framed as aggregate, caveated simulation evidence and the next gate kept prospective and paper-only.
+Status: **published public-source portfolio case**, with the historical result framed as aggregate, caveated simulation evidence and the next gate kept prospective and paper-only.

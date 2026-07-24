@@ -33,11 +33,12 @@
 
 ## Git release gate
 
-- [x] Standalone repository initialized on `main` with no remote.
-- [x] Release files staged; ignored tooling/caches are not part of the index.
-- [x] Staged filenames, sizes, whitespace, high-confidence secrets, local paths, required artifacts, and license metadata checked by `scripts/check_release_staging.py`.
-- [x] No commit, remote, push, deployment, public repository, or hosted CI run has been created.
+- [x] Standalone repository initialized on `main`.
+- [x] Release files committed; ignored tooling/caches are not part of the index.
+- [x] Filenames, sizes, whitespace, high-confidence secrets, local paths, required artifacts, and license metadata checked by `scripts/check_release_staging.py`.
 - [x] Public repository publication authorized on 2026-07-23.
+- [x] `main` pushed to `PPDEGRET/financebot-agent-evaluation` on 2026-07-24.
+- [x] Clean-install GitHub Actions verification passed on Linux.
 
 ## Suggested public metadata
 
@@ -47,12 +48,11 @@
 
 **Topics:** `applied-ai`, `agent-evaluation`, `quantitative-research`, `simulation`, `risk-controls`, `python`, `sqlite`, `portfolio-project`
 
-## Actions requiring separate authorization
+## Publication record
 
-1. Re-run `python scripts/check_release_staging.py`.
-2. Create the initial local commit from the reviewed index.
-3. Create or select the public remote.
-4. Push `main` without adding ignored local artifacts.
-5. Verify the rendered README, license detection, screenshots, and repository description on the hosting platform.
+- Public repository: <https://github.com/PPDEGRET/financebot-agent-evaluation>
+- GitHub detects the Apache-2.0 license and configured description/topics.
+- The rendered README and hero screenshot return successfully from the public repository.
+- Hosted CI installs the package cleanly, checks deterministic artifacts and safety boundaries, and runs all 61 tests.
 
 No deployment or prospective protocol activation is implied by repository publication.

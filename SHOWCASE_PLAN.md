@@ -155,6 +155,6 @@ Authorized on 2026-07-14 as a focused credibility pass. This extension must rema
 
 ## Publication status and next validation gate
 
-Target status: **ready for public repository publication**, not deployed and not connected to any account.
+Status: **published public-source portfolio case** at <https://github.com/PPDEGRET/financebot-agent-evaluation>, not deployed and not connected to any account.
 
 Next external validation gate: first integrate the verified fill journal into the prospective runner and add durable pending-decision/tournament checkpoints. Only then, after a separate written activation decision, run the frozen configuration once in its declared paper-only window and evaluate it without mid-window tuning.

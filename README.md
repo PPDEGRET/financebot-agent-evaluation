@@ -6,8 +6,6 @@ FINANCEBOT tests a specific systems question: does calling a model more often im
 
 > **Observed in this simulator:** open + close review produced a higher simulated return and a shallower maximum drawdown than hourly review during the Feb–Jun comparison while using 475 fewer estimated model calls. This is caveated historical simulation evidence, not evidence of a general market edge.
 
-![FINANCEBOT calls-versus-performance dashboard](docs/screenshots/results-desktop.png)
-
 ## Result at a glance
 
 **Historical paper simulation · 2026-02-02 through 2026-06-17 · no live capital**
@@ -43,8 +41,6 @@ Hourly review created 475 more estimated invocation opportunities than open + cl
 
 ## Architecture
 
-![FINANCEBOT architecture](docs/diagrams/architecture.svg)
-
 1. A replay engine advances a timestamp-bounded daily/hourly clock.
 2. Deterministic labs and an optimizer create long-only candidates.
 3. A model agent or deterministic policy returns structured decisions.
@@ -64,10 +60,6 @@ The local dashboard goes beyond aggregate results:
 - **Decision trace:** one sanitized synthetic open review shows the prior-bar cutoff, deterministic candidates, structured policy approval, real validator output, later fill prices, costs, and before/after ledger state. Random IDs and model sessions are excluded; the trace has a reproducible SHA-256 digest.
 - **Risk failure lab:** ten fixed invalid intents are rejected by the real validator for sell-to-open, missing price, low price, low liquidity, weak edge, oversized order, insufficient cash, maximum positions, sector concentration, and single-position concentration. A valid control is approved.
 - **Recovery drill:** a standard-library SQLite journal is interrupted twice. Three duplicate deliveries are suppressed, four durable fill events verify through a hash chain, and the restored paper ledger exactly matches an uninterrupted baseline.
-
-![FINANCEBOT decision trace](docs/screenshots/trace-desktop.png)
-
-![FINANCEBOT risk failure and recovery controls](docs/screenshots/controls-desktop.png)
 
 Recovery scope is deliberately narrow: this proves transaction-level paper-fill restoration, not pending-decision, model-session, tournament-scheduler, or external broker-state recovery.
 

@@ -52,7 +52,7 @@
 
 - Public repository: <https://github.com/PPDEGRET/financebot-agent-evaluation>
 - GitHub detects the Apache-2.0 license and configured description/topics.
-- The rendered README and hero screenshot return successfully from the public repository.
+- The rendered README returns successfully from the public repository.
 - Hosted CI installs the package cleanly, checks deterministic artifacts and safety boundaries, and runs all 61 tests.
 
 No deployment or prospective protocol activation is implied by repository publication.

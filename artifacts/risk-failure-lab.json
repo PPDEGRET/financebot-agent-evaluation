@@ -1,0 +1,336 @@
+{
+  "approved_controls": 1,
+  "as_of": "2026-02-16T15:30:00+00:00",
+  "blocked_cases": 10,
+  "broker_connections": 0,
+  "cases": [
+    {
+      "approved": false,
+      "id": "sell_to_open",
+      "intent": {
+        "action": "trim",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 10,
+        "side": "sell",
+        "ticker": "SYN_SAFE"
+      },
+      "issue_codes": [
+        "WOULD_SHORT"
+      ],
+      "issues": [
+        {
+          "code": "WOULD_SHORT",
+          "message": "Sell quantity 10 exceeds current long position 0.",
+          "severity": "error"
+        }
+      ],
+      "label": "Sell-to-open attempt",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    },
+    {
+      "approved": false,
+      "id": "missing_price",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 50,
+        "side": "buy",
+        "ticker": "SYN_MISSING"
+      },
+      "issue_codes": [
+        "MISSING_PRICE"
+      ],
+      "issues": [
+        {
+          "code": "MISSING_PRICE",
+          "message": "No usable price for SYN_MISSING.",
+          "severity": "error"
+        }
+      ],
+      "label": "Missing current price",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    },
+    {
+      "approved": false,
+      "id": "price_floor",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 100,
+        "side": "buy",
+        "ticker": "SYN_PENNY"
+      },
+      "issue_codes": [
+        "PRICE_TOO_LOW"
+      ],
+      "issues": [
+        {
+          "code": "PRICE_TOO_LOW",
+          "message": "SYN_PENNY price 0.50 below min 5.00.",
+          "severity": "error"
+        }
+      ],
+      "label": "Price below floor",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    },
+    {
+      "approved": false,
+      "id": "liquidity_floor",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 50,
+        "side": "buy",
+        "ticker": "SYN_THIN"
+      },
+      "issue_codes": [
+        "LIQUIDITY_TOO_LOW"
+      ],
+      "issues": [
+        {
+          "code": "LIQUIDITY_TOO_LOW",
+          "message": "SYN_THIN ADV $1,000,000 below min $20,000,000.",
+          "severity": "error"
+        }
+      ],
+      "label": "Liquidity below floor",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    },
+    {
+      "approved": false,
+      "id": "weak_edge",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 20.0,
+        "quantity": 50,
+        "side": "buy",
+        "ticker": "SYN_WEAK"
+      },
+      "issue_codes": [
+        "EDGE_TOO_LOW"
+      ],
+      "issues": [
+        {
+          "code": "EDGE_TOO_LOW",
+          "message": "Expected net edge 20.0 bps below minimum 25.0 bps.",
+          "severity": "error"
+        }
+      ],
+      "label": "Expected edge below cost hurdle",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    },
+    {
+      "approved": false,
+      "id": "oversized_order",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 250,
+        "side": "buy",
+        "ticker": "SYN_LARGE"
+      },
+      "issue_codes": [
+        "ORDER_CAP"
+      ],
+      "issues": [
+        {
+          "code": "ORDER_CAP",
+          "message": "Order notional weight 25.00% exceeds cap 20.00%.",
+          "severity": "error"
+        }
+      ],
+      "label": "Order notional above cap",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    },
+    {
+      "approved": false,
+      "id": "insufficient_cash",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 50,
+        "side": "buy",
+        "ticker": "SYN_NEW"
+      },
+      "issue_codes": [
+        "INSUFFICIENT_CASH"
+      ],
+      "issues": [
+        {
+          "code": "INSUFFICIENT_CASH",
+          "message": "Order cost $5,003.50 exceeds available cash after buffer.",
+          "severity": "error"
+        }
+      ],
+      "label": "Cash buffer breach",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 1000.0,
+        "equity": 100000.0,
+        "positions": 1
+      }
+    },
+    {
+      "approved": false,
+      "id": "max_positions",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 50,
+        "side": "buy",
+        "ticker": "SYN_THREE"
+      },
+      "issue_codes": [
+        "MAX_POSITIONS"
+      ],
+      "issues": [
+        {
+          "code": "MAX_POSITIONS",
+          "message": "Opening SYN_THREE would exceed max positions 2.",
+          "severity": "error"
+        }
+      ],
+      "label": "Maximum positions reached",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 80000.0,
+        "equity": 100000.0,
+        "positions": 2
+      }
+    },
+    {
+      "approved": false,
+      "id": "sector_concentration",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 100,
+        "side": "buy",
+        "ticker": "SYN_CLUSTER_B"
+      },
+      "issue_codes": [
+        "SECTOR_CAP"
+      ],
+      "issues": [
+        {
+          "code": "SECTOR_CAP",
+          "message": "Post-trade cluster exposure 55.00% exceeds cap 50.00%.",
+          "severity": "error"
+        }
+      ],
+      "label": "Sector concentration breach",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 55000.0,
+        "equity": 100000.0,
+        "positions": 1
+      }
+    },
+    {
+      "approved": false,
+      "id": "position_concentration",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 100,
+        "side": "buy",
+        "ticker": "SYN_FOCUS"
+      },
+      "issue_codes": [
+        "POSITION_CAP"
+      ],
+      "issues": [
+        {
+          "code": "POSITION_CAP",
+          "message": "Post-trade position weight 45.00% exceeds cap 40.00%.",
+          "severity": "error"
+        }
+      ],
+      "label": "Single-position cap breach",
+      "order_created": false,
+      "portfolio_before": {
+        "cash": 65000.0,
+        "equity": 100000.0,
+        "positions": 1
+      }
+    },
+    {
+      "approved": true,
+      "id": "safe_control",
+      "intent": {
+        "action": "buy",
+        "expected_net_edge_bps": 70.0,
+        "quantity": 50,
+        "side": "buy",
+        "ticker": "SYN_SAFE"
+      },
+      "issue_codes": [
+        "APPROVED"
+      ],
+      "issues": [
+        {
+          "code": "APPROVED",
+          "message": "Order passed deterministic risk checks.",
+          "severity": "info"
+        }
+      ],
+      "label": "Valid long-only control",
+      "order_created": true,
+      "portfolio_before": {
+        "cash": 100000.0,
+        "equity": 100000.0,
+        "positions": 0
+      }
+    }
+  ],
+  "caveat": "These fixed synthetic intents demonstrate enforcement behavior, not the safety or quality of any investment decision.",
+  "external_model_calls": 0,
+  "label": "Synthetic demonstration",
+  "limits": {
+    "allow_margin": false,
+    "allow_shorts": false,
+    "cash_buffer_weight": 0.05,
+    "cost_bps_per_side": 4.0,
+    "max_order_notional_weight": 0.2,
+    "max_position_weight": 0.4,
+    "max_positions": 2,
+    "max_sector_weight": 0.5,
+    "min_adv_dollars": 20000000.0,
+    "min_expected_net_edge_bps": 25.0,
+    "min_price": 5.0,
+    "reject_social_only_above_weight": 0.01,
+    "slippage_bps": 3.0
+  },
+  "mode": "real_deterministic_validator",
+  "schema_version": 1
+}

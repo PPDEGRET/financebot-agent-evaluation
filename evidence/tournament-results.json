@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "title": "FINANCEBOT agent-cadence tournament",
+  "positioning": "Historical simulation evidence for an agent-evaluation system; not an investment product.",
+  "currency": "USD",
+  "historical_evidence": {
+    "selection_window": {
+      "label": "January selection arena",
+      "start": "2026-01-02",
+      "end": "2026-01-30",
+      "status": "selection_period",
+      "benchmarks": {"SPY": 0.0128812145, "QQQ": 0.0142712217},
+      "variants": [
+        {"id": "daily_open", "label": "Open only", "review_schedule": "09:30 ET", "simulated_return": 0.2500220085, "max_drawdown": -0.1250164705, "reported_sharpe": 2.1001533052, "fills": 23, "model_calls": 20, "status": "promoted"},
+        {"id": "open_close", "label": "Open + close", "review_schedule": "09:30 and 15:30 ET", "simulated_return": 0.2506912485, "max_drawdown": -0.1013136887, "reported_sharpe": 2.2995268668, "fills": 44, "model_calls": 40, "status": "promoted"},
+        {"id": "three_times_day", "label": "Three times daily", "review_schedule": "09:30, 12:30, and 15:30 ET", "simulated_return": 0.2250996895, "max_drawdown": -0.1408314934, "reported_sharpe": 1.8044358155, "fills": 36, "model_calls": 60, "status": "promoted"},
+        {"id": "every_hour", "label": "Hourly", "review_schedule": "Every market-hour bar", "simulated_return": 0.1742508740, "max_drawdown": -0.1293746789, "reported_sharpe": 1.5371871866, "fills": 76, "model_calls": 140, "status": "not_promoted"},
+        {"id": "candidate_event", "label": "Candidate / event", "review_schedule": "Candidate and event triggers", "simulated_return": -0.0657685038, "max_drawdown": -0.0700357560, "reported_sharpe": -2.0195439295, "fills": 9, "model_calls": 140, "status": "not_promoted"}
+      ]
+    },
+    "comparison_window": {
+      "label": "Feb–Jun promoted comparison",
+      "start": "2026-02-02",
+      "end": "2026-06-17",
+      "status": "post_selection_comparison_not_pristine_oos",
+      "benchmarks": {"SPY": 0.0684109084, "QQQ": 0.1553662349},
+      "variants": [
+        {"id": "daily_open", "label": "Open only", "review_schedule": "09:30 ET", "simulated_return": 0.1126326247, "benchmark": 0.1553662349, "benchmark_label": "QQQ", "max_drawdown": -0.3530972489, "reported_sharpe": 0.2874819086, "fills": 80, "model_calls": 95, "status": "below_qqq_with_larger_drawdown"},
+        {"id": "open_close", "label": "Open + close", "review_schedule": "09:30 and 15:30 ET", "simulated_return": 0.2634153532, "benchmark": 0.1553662349, "benchmark_label": "QQQ", "max_drawdown": -0.2165398536, "reported_sharpe": 0.4666382563, "fills": 94, "model_calls": 190, "status": "highest_return_in_this_simulation"},
+        {"id": "three_times_day", "label": "Three times daily", "review_schedule": "09:30, 12:30, and 15:30 ET", "simulated_return": -0.0842473219, "benchmark": 0.1553662349, "benchmark_label": "QQQ", "max_drawdown": -0.2685267639, "reported_sharpe": -0.0301056641, "fills": 147, "model_calls": 285, "status": "negative_simulated_return"},
+        {"id": "every_hour", "label": "Hourly", "review_schedule": "Every market-hour bar", "simulated_return": 0.0260441682, "benchmark": 0.1553662349, "benchmark_label": "QQQ", "max_drawdown": -0.2958171218, "reported_sharpe": 0.1562575586, "fills": 86, "model_calls": 665, "status": "more_calls_lower_return_than_open_close"}
+      ]
+    }
+  },
+  "interpretation": "Within this simulator and comparison window, invoking the agent more frequently did not produce better decisions: open + close review used 190 calls and returned 26.34%, while hourly review used 665 calls and returned 2.60%.",
+  "required_caveats": [
+    "Current-listing-universe bias: the broad universe was assembled from current listings rather than a point-in-time membership source.",
+    "Paper execution assumptions: fills, costs, slippage, liquidity, and timing are simulated.",
+    "January selection and repeated-testing risk: January selected variants, and later inspection reduces claims of pristine out-of-sample evidence.",
+    "Short historical regime: February through mid-June does not establish robustness across market conditions.",
+    "Non-deterministic model decisions: model outputs may differ on rerun even when configuration is frozen.",
+    "No live capital: no result shown here came from a live brokerage account."
+  ],
+  "metric_notes": {
+    "return": "Paper-ledger ending equity divided by starting equity minus one.",
+    "max_drawdown": "Largest peak-to-trough decline in the simulated equity snapshots.",
+    "reported_sharpe": "Repository-reported statistic: square-root-of-252 times mean divided by population standard deviation of per-snapshot percentage changes. Snapshot frequency is intraday, so this is retained for comparison rather than presented as a conventional hourly annualization.",
+    "model_calls": "Estimated from configured review invocations in aggregate tournament artifacts; not provider billing records.",
+    "benchmark": "Buy-and-hold return over the same dates; it does not match exposure, concentration, turnover, or risk."
+  }
+}

@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install package
+        run: python -m pip install -e ".[dev]"
+
+      - name: Verify deterministic artifacts and safety boundaries
+        run: |
+          python scripts/generate_sample_data.py --check
+          python scripts/run_showcase_replay.py --check
+          python scripts/run_risk_failure_lab.py --check
+          python scripts/run_recovery_drill.py --check
+          python scripts/check_showcase_safety.py
+          python scripts/freeze_protocol.py --check
+          python scripts/validate_package.py
+
+      - name: Run tests
+        run: python -m pytest -q

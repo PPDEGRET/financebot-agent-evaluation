@@ -1,0 +1,43 @@
+{
+  "date_range": {
+    "end": "2026-02-13",
+    "start": "2025-10-13"
+  },
+  "files": {
+    "daily_prices.csv": {
+      "sha256": "8b9cd51e8598127a9695e814a3545be18867d645588408ea2ed6f8d4437b7ba6"
+    },
+    "daily_volume.csv": {
+      "sha256": "7f1bbdcc167e5cd23ad87d98fdfbda00bd297a2480f4c82b5577d0c8d77ccbcf"
+    },
+    "hourly_prices.csv": {
+      "sha256": "655e3c4904b8b4dbcc01673539142b0b1b5110897bb5ffe0fe9fb53a86e3204f"
+    }
+  },
+  "generated_at": "2026-07-14T00:00:00Z",
+  "generator_version": "1.0.0",
+  "label": "Synthetic demonstration",
+  "limitations": [
+    "Prices are smooth mathematical series designed to exercise code paths, not resemble a validated market process.",
+    "Results on this fixture have no financial meaning and cannot reproduce the historical tournament."
+  ],
+  "origin": "Generated locally by scripts/generate_sample_data.py; contains no observed market data.",
+  "review_times": [
+    "09:30",
+    "10:30",
+    "11:30",
+    "12:30",
+    "13:30",
+    "14:30",
+    "15:30"
+  ],
+  "rights": "Original generated fixture; no external dataset license applies. Repository license intentionally not selected.",
+  "schema_version": 1,
+  "symbols": [
+    "SYN_BENCH",
+    "SYN_ORBIT",
+    "SYN_CEDAR",
+    "SYN_HARBOR",
+    "SYN_RIDGE"
+  ]
+}

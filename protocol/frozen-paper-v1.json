@@ -1,0 +1,151 @@
+{
+  "protocol_id": "financebot-paper-open-close-v1",
+  "version": "1.0.0",
+  "status": "proposed_not_started",
+  "frozen_at": "2026-07-23T00:00:00Z",
+  "configuration_sha256": "ba704087e9de7eb6e322b092b58ffcd97d61c2ea778baef83d39e3cdb11a57be",
+  "brief": {
+    "path": "protocol/open-close-brief.md",
+    "sha256": "f7b033fc0026ee5009ef91dc64f8ba5b94e51e36dce14c804beab1db800c2a0f"
+  },
+  "authorization": {
+    "activation_authorized": false,
+    "repository_publication_authorized": true,
+    "deployment_authorized": false,
+    "live_capital": false,
+    "broker_connection": false,
+    "paper_ledger_only": true
+  },
+  "window": {
+    "planned_start": "2026-08-03T09:30:00-04:00",
+    "planned_end": "2026-10-30T15:30:00-04:00",
+    "missed_start_rule": "If the window is not activated before its first review, this version expires; freeze a new version before observing replacement-window outcomes."
+  },
+  "research_question": "Does the open + close review cadence remain operationally coherent and competitive with passive references in a prospectively logged paper window without mid-window tuning?",
+  "universe": {
+    "selection_rule": "Fixed before the first observation; no additions, deletions, or substitutions during the window.",
+    "symbols": [
+      "DIA",
+      "EEM",
+      "GLD",
+      "IWM",
+      "QQQ",
+      "SPY",
+      "TLT",
+      "XLB",
+      "XLE",
+      "XLF",
+      "XLI",
+      "XLK",
+      "XLP",
+      "XLRE",
+      "XLU",
+      "XLV",
+      "XLY"
+    ],
+    "rationale": "A frozen, liquid ETF set reduces single-name corporate-action and current-listing-universe concerns. It does not reproduce the historical broad-stock universe."
+  },
+  "data": {
+    "required_fields": [
+      "timestamp",
+      "adjusted_close",
+      "volume",
+      "available_at"
+    ],
+    "review_timezone": "America/New_York",
+    "review_times": [
+      "09:30",
+      "15:30"
+    ],
+    "maximum_calls_per_session": 2,
+    "availability_rule": "Only records with available_at at or before the decision cutoff may enter context.",
+    "source_activation_record": "A licensed or otherwise authorized provider and retrieval method must be named and hashed before the first review; this does not permit changing any strategy field.",
+    "public_repository_rule": "Do not commit vendor data, credentials, account records, or raw model sessions."
+  },
+  "agent": {
+    "runtime": "Pi CLI",
+    "provider_model": "openai/gpt-5.5",
+    "thinking": "high",
+    "tools": [
+      "read"
+    ],
+    "session_continuation": false,
+    "temperature_control": "not_available",
+    "decision_schema": "HourlyAgentDecision",
+    "fallback": "Malformed, unavailable, or timed-out invocation becomes a logged no-trade decision.",
+    "non_determinism_acknowledged": true
+  },
+  "candidate_policy": {
+    "lab": "static_momentum",
+    "lookback_trading_days": 126,
+    "top_n": 8,
+    "minimum_trailing_return": 0.02,
+    "relay_included": true,
+    "relay_lookback_trading_days": 30,
+    "relay_top_n": 12,
+    "relay_minimum_momentum": 0.03,
+    "ensemble_max_names": 5,
+    "ensemble_max_weight_per_name": 0.2,
+    "candidate_triggered_extra_calls": false
+  },
+  "risk": {
+    "allow_shorts": false,
+    "allow_margin": false,
+    "allow_options": false,
+    "max_position_weight": 0.2,
+    "max_order_notional_weight": 0.2,
+    "max_sector_weight": 0.4,
+    "max_positions": 5,
+    "cash_buffer_weight": 0.05,
+    "minimum_price": 5.0,
+    "minimum_average_daily_dollar_volume": 20000000.0,
+    "maximum_adv_participation": 0.02,
+    "minimum_expected_net_edge_bps": 25.0
+  },
+  "execution": {
+    "initial_paper_cash": 100000.0,
+    "fill_rule": "Next timestamped bar after the decision cutoff; never the context bar.",
+    "transaction_cost_bps_per_side": 20.0,
+    "slippage_bps": 5.0,
+    "partial_fills": false,
+    "live_order_route": "absent"
+  },
+  "logging": {
+    "append_only": true,
+    "record_inputs": [
+      "decision_time",
+      "data_cutoff",
+      "context_digest",
+      "candidate_intents"
+    ],
+    "record_outputs": [
+      "decision_digest",
+      "validation",
+      "paper_fill",
+      "portfolio_snapshot"
+    ],
+    "state_recovery": "A SQLite fill-journal drill verifies idempotent paper-fill restoration. Activation still requires wiring it into the prospective runner plus a durable checkpoint for pending decisions and tournament state.",
+    "public_redaction": "Publish only aggregate outcomes and safe synthetic examples."
+  },
+  "evaluation": {
+    "primary": [
+      "simulated_return",
+      "maximum_drawdown",
+      "reported_sharpe",
+      "model_calls",
+      "fills"
+    ],
+    "passive_references": [
+      "SPY",
+      "QQQ"
+    ],
+    "reporting_rule": "Report all metrics and failures once after the window; do not stop or tune because of performance.",
+    "sharpe_note": "Retain the repository-reported formula for comparability and also report a frequency-corrected statistic before external review.",
+    "success_rule": "Completion means protocol adherence and interpretable evidence, not a required positive return or benchmark excess."
+  },
+  "change_control": {
+    "mid_window_changes_allowed": false,
+    "safety_exception": "Pause on data-integrity, risk, or logging failure; record the failure. Do not silently repair and resume.",
+    "new_version_rule": "Any prompt, model, universe, cadence, data, risk, execution, or metric change requires a new hash and future window before outcomes are observed."
+  }
+}

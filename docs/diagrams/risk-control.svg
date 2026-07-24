@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">FINANCEBOT deterministic risk-control cascade</title>
+  <desc id="desc">A structured trade intent passes through schema, side, price, liquidity, edge, cash, concentration, position and sector checks. Any failure creates a rejection. Approval can only produce a next-bar paper-ledger order in showcase mode, where broker routes are blocked.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#60707d"/></marker></defs>
+  <rect width="1200" height="675" fill="#fffdf8"/>
+  <text x="60" y="58" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="800" fill="#c93218" letter-spacing="2">RISK CONTROL</text>
+  <text x="60" y="106" font-family="Inter,Segoe UI,sans-serif" font-size="38" font-weight="800" fill="#0c1824">Every model action crosses a deterministic gate</text>
+  <text x="60" y="140" font-family="Inter,Segoe UI,sans-serif" font-size="17" fill="#60707d">A model cannot waive limits. Rejections and no-trade outcomes are first-class evidence.</text>
+
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <rect x="60" y="222" width="182" height="116" rx="20" fill="#0c1824"/>
+    <text x="84" y="253" font-size="11" font-weight="800" fill="#9de4cb">STRUCTURED INPUT</text>
+    <text x="84" y="286" font-size="20" font-weight="800" fill="#fffdf8">TradeIntent</text>
+    <text x="84" y="313" font-size="13" fill="#d7e2e6">Long / trim / close</text>
+
+    <rect x="310" y="188" width="438" height="326" rx="24" fill="#f4f1e9" stroke="#cfc9bb"/>
+    <text x="336" y="224" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.4">RISKVALIDATOR · FIXED ORDER</text>
+    <g font-size="14" font-weight="700" fill="#223242">
+      <rect x="336" y="248" width="184" height="42" rx="9" fill="#fffdf8"/><text x="352" y="274">1 · Schema + action</text>
+      <rect x="538" y="248" width="184" height="42" rx="9" fill="#fffdf8"/><text x="554" y="274">2 · Price + liquidity</text>
+      <rect x="336" y="304" width="184" height="42" rx="9" fill="#fffdf8"/><text x="352" y="330">3 · Expected net edge</text>
+      <rect x="538" y="304" width="184" height="42" rx="9" fill="#fffdf8"/><text x="554" y="330">4 · Cash buffer</text>
+      <rect x="336" y="360" width="184" height="42" rx="9" fill="#fffdf8"/><text x="352" y="386">5 · Name / order cap</text>
+      <rect x="538" y="360" width="184" height="42" rx="9" fill="#fffdf8"/><text x="554" y="386">6 · Position count</text>
+      <rect x="336" y="416" width="184" height="42" rx="9" fill="#fffdf8"/><text x="352" y="442">7 · Sector exposure</text>
+      <rect x="538" y="416" width="184" height="42" rx="9" fill="#fffdf8"/><text x="554" y="442">8 · No sell-to-open</text>
+    </g>
+    <rect x="336" y="478" width="386" height="20" rx="10" fill="#e3b64b"/>
+    <text x="529" y="492" text-anchor="middle" font-size="10" font-weight="800" fill="#4f3b00">DETERMINISTIC · AUDITABLE · MODEL CANNOT OVERRIDE</text>
+
+    <rect x="826" y="188" width="314" height="136" rx="20" fill="#e5f5ef" stroke="#9de4cb"/>
+    <text x="852" y="220" font-size="11" font-weight="800" fill="#08705c">ALL CHECKS PASS</text>
+    <text x="852" y="253" font-size="21" font-weight="800" fill="#0c1824">Approved OrderRequest</text>
+    <text x="852" y="281" font-size="13" fill="#223242">Next-bar paper fill only</text>
+    <text x="852" y="302" font-size="13" fill="#223242">Costs + stable fill ID + journal</text>
+
+    <rect x="826" y="378" width="314" height="136" rx="20" fill="#f9d7cf" stroke="#ff5a36"/>
+    <text x="852" y="410" font-size="11" font-weight="800" fill="#b62d2d">ANY CHECK FAILS</text>
+    <text x="852" y="443" font-size="21" font-weight="800" fill="#671c1c">Rejected + reason</text>
+    <text x="852" y="471" font-size="13" fill="#671c1c">No order · no fill</text>
+    <text x="852" y="492" font-size="13" fill="#671c1c">Failure remains in audit evidence</text>
+  </g>
+  <g fill="none" stroke="#60707d" stroke-width="2" marker-end="url(#arrow)"><path d="M242 280 H297"/><path d="M748 256 H813"/><path d="M748 446 H813"/></g>
+  <rect x="60" y="568" width="1080" height="54" rx="14" fill="#0c1824"/>
+  <text x="600" y="600" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="800" fill="#ffb7a7">SHOWCASE MODE: broker connect · submit · reconcile · open-order lookup → blocked before side effects</text>
+</svg>

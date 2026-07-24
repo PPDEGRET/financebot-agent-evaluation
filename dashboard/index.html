@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FINANCEBOT: an offline agent-cadence research case with decision traces, deterministic risk failures, paper-fill recovery, and explicit limitations.">
+  <title>FINANCEBOT — Agent cadence, measured</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%230c1824'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='20' font-weight='700' fill='%23fffdf8'%3EFB%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the research result</a>
+
+  <header class="site-header" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="FINANCEBOT home">
+      <span class="brand-mark" aria-hidden="true">FB</span>
+      <span>FINANCEBOT</span>
+    </a>
+    <nav aria-label="Page sections">
+      <a href="#results">Results</a>
+      <a href="#trace">Trace</a>
+      <a href="#controls">Controls</a>
+      <a href="#demo">Replay</a>
+      <a href="#protocol">Next gate</a>
+    </nav>
+    <span class="mode-pill"><span aria-hidden="true"></span> Research only</span>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span>Research note 03</span> Agent cadence / Feb–Jun 2026</p>
+          <h1 id="hero-title">More reviews did not mean better decisions.</h1>
+          <p class="hero-lede">FINANCEBOT isolates agent invocation frequency as an experimental variable. In this simulator, open + close review materially outperformed hourly review while making 475 fewer model calls.</p>
+          <div class="finding" role="note">
+            <span class="finding-kicker">Defensible result</span>
+            <p><strong>190 calls → +26.34%</strong> for open + close, compared with <strong>665 calls → +2.60%</strong> for hourly review. This is a historical paper simulation—not evidence of a general market edge.</p>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#results">Inspect every variant</a>
+            <a class="button button-secondary" href="#trace">Trace one decision</a>
+          </div>
+        </div>
+
+        <aside class="evidence-boundary" aria-labelledby="boundary-title">
+          <div class="boundary-head">
+            <p class="mini-label">Evidence boundary</p>
+            <span class="status-badge">No live capital</span>
+          </div>
+          <h2 id="boundary-title">What must travel with +26.34%</h2>
+          <ul class="caveat-list">
+            <li><strong>Current-listing-universe bias</strong> rather than point-in-time membership.</li>
+            <li><strong>Paper execution assumptions</strong> for fills, costs, liquidity, and timing.</li>
+            <li><strong>January selection / repeated-testing risk</strong> before this comparison.</li>
+            <li><strong>Short historical regime</strong> from February through mid-June.</li>
+            <li><strong>Non-deterministic model decisions</strong> can vary on rerun.</li>
+            <li><strong>No live capital</strong>, broker-confirmed fills, or prospective outcome.</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="metric-rail" aria-label="Highlighted Feb–Jun open plus close metrics">
+        <article>
+          <span class="metric-label">Simulated return</span>
+          <strong class="metric-value positive">+26.34%</strong>
+          <span class="metric-note">Open + close</span>
+        </article>
+        <article>
+          <span class="metric-label">QQQ reference</span>
+          <strong class="metric-value">+15.54%</strong>
+          <span class="metric-note">Same dates; unmatched risk</span>
+        </article>
+        <article>
+          <span class="metric-label">Maximum drawdown</span>
+          <strong class="metric-value negative">−21.65%</strong>
+          <span class="metric-note">Material downside</span>
+        </article>
+        <article>
+          <span class="metric-label">Reported Sharpe</span>
+          <strong class="metric-value">0.47</strong>
+          <span class="metric-note">Repository metric*</span>
+        </article>
+        <article>
+          <span class="metric-label">Paper fills</span>
+          <strong class="metric-value">94</strong>
+          <span class="metric-note">Simulated next-bar fills</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section results-section" id="results" aria-labelledby="results-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span>Comparison</span> One system, four review schedules</p>
+          <h2 id="results-title">Calls versus performance</h2>
+        </div>
+        <p class="section-intro">The hourly variant made 3.5× as many estimated model calls as open + close. Its simulated return was 23.74 percentage points lower.</p>
+      </div>
+
+      <div class="chart-shell">
+        <div class="chart-header">
+          <div>
+            <p class="mini-label">Feb 02 – Jun 17, 2026</p>
+            <h3>Invocation count did not track return</h3>
+          </div>
+          <div class="chart-key" aria-label="Chart key">
+            <span><i class="key-dot key-highlight"></i>Highlighted cadence</span>
+            <span><i class="key-line"></i>QQQ +15.54%</span>
+          </div>
+        </div>
+        <div class="chart-context" role="note" aria-label="Required context for the highlighted Feb–Jun result">
+          <strong>+26.34% simulated return · −21.65% maximum drawdown · reported Sharpe 0.47 · QQQ +15.54%</strong>
+          <span>Current-listing-universe bias · paper execution assumptions · January selection / repeated-testing risk · short historical regime · non-deterministic model decisions · no live capital.</span>
+        </div>
+        <div class="chart-wrap">
+          <svg id="calls-chart" viewBox="0 0 900 470" role="img" aria-labelledby="chart-title chart-desc">
+            <title id="chart-title">Model calls versus simulated return by review schedule</title>
+            <desc id="chart-desc">Open only made 95 calls and returned 11.26 percent. Open plus close made 190 calls and returned 26.34 percent. Three times daily made 285 calls and returned negative 8.42 percent. Hourly made 665 calls and returned 2.60 percent. QQQ returned 15.54 percent over the same dates.</desc>
+          </svg>
+        </div>
+        <div class="chart-axis-note"><span>Fewer calls</span><span>Estimated model calls →</span><span>More calls</span></div>
+        <p class="chart-footnote">Model calls are estimates from configured review invocations, not provider billing records. QQQ is a same-window passive reference; exposure and risk are not matched.</p>
+      </div>
+
+      <div class="table-shell" tabindex="0" aria-label="Scrollable full result table">
+        <table>
+          <caption>Feb–Jun historical paper-simulation results. All rows share the caveats above.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Variant</th>
+              <th scope="col">Review schedule</th>
+              <th scope="col">Sim. return</th>
+              <th scope="col">QQQ</th>
+              <th scope="col">Max drawdown</th>
+              <th scope="col">Sharpe*</th>
+              <th scope="col">Fills</th>
+              <th scope="col">Calls</th>
+              <th scope="col">Status / caveat</th>
+            </tr>
+          </thead>
+          <tbody id="results-body">
+            <tr><td colspan="9">Loading local aggregate evidence…</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="metric-definition">* “Reported Sharpe” preserves the repository calculation for comparison: √252 × mean / population standard deviation of per-snapshot returns. Because snapshots are intraday, it is not presented as a conventional hourly annualization.</p>
+    </section>
+
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="section-heading compact">
+        <div>
+          <p class="eyebrow"><span>System design</span> Model judgment inside deterministic rails</p>
+          <h2 id="method-title">The agent proposes. The system decides what can execute.</h2>
+        </div>
+      </div>
+      <ol class="flow" aria-label="FINANCEBOT data and decision flow">
+        <li><span class="flow-index">01</span><strong>Bound context</strong><small>Only data available before the decision cutoff.</small></li>
+        <li><span class="flow-index">02</span><strong>Generate candidates</strong><small>Deterministic momentum and portfolio construction.</small></li>
+        <li><span class="flow-index">03</span><strong>Review</strong><small>Model or deterministic policy returns structured intents.</small></li>
+        <li><span class="flow-index">04</span><strong>Validate</strong><small>Long-only, cash, name, sector, liquidity, and edge checks.</small></li>
+        <li><span class="flow-index">05</span><strong>Paper fill</strong><small>Next-bar execution with explicit costs and slippage.</small></li>
+      </ol>
+
+      <div class="method-grid">
+        <article class="method-card dark-card">
+          <p class="mini-label">Selection logic</p>
+          <h3>January chose what advanced.</h3>
+          <p>Five cadence variants ran in a January selection arena. Open + close, open only, and three-times-daily advanced. That makes January informative—but not clean final evidence.</p>
+          <div class="selection-strip" aria-label="January selection returns">
+            <span style="--value: 83.6%"><b>Open + close</b><i></i><em>+25.07%</em></span>
+            <span style="--value: 83.3%"><b>Open only</b><i></i><em>+25.00%</em></span>
+            <span style="--value: 75%"><b>3× daily</b><i></i><em>+22.51%</em></span>
+            <span style="--value: 58.1%"><b>Hourly</b><i></i><em>+17.43%</em></span>
+          </div>
+        </article>
+        <article class="method-card">
+          <p class="mini-label">State recovery</p>
+          <h3>Fill recovery proven; orchestration still coarse.</h3>
+          <p>A SQLite hash-chain journal now restores paper fills exactly once after interruption and suppresses duplicate delivery. Pending decisions, model sessions, and tournament scheduling still lack durable recovery.</p>
+          <span class="card-status warning">Partial closure · scope stated</span>
+        </article>
+        <article class="method-card">
+          <p class="mini-label">Safety boundary</p>
+          <h3>Showcase mode fails closed.</h3>
+          <p>Broker connections, order submission, reconciliation, model runtimes, and network price downloads raise before side effects. The local demonstration uses a generated dataset and deterministic policy.</p>
+          <span class="card-status safe">8 capability paths checked</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section trace-section" id="trace" aria-labelledby="trace-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span>Decision trace</span> One review, every boundary</p>
+          <h2 id="trace-title">Inspect what the system saw, allowed, and booked.</h2>
+        </div>
+        <p class="section-intro">This sanitized synthetic trace strips random IDs and external sessions. It follows one open review from prior-bar context to two validated next-bar paper fills.</p>
+      </div>
+
+      <div class="trace-shell">
+        <div class="trace-head">
+          <div>
+            <span class="status-badge trace-badge">Synthetic demonstration</span>
+            <span class="status-badge trace-badge">0 model calls</span>
+          </div>
+          <code id="trace-hash">Loading trace digest…</code>
+        </div>
+        <div class="trace-clock" role="list" aria-label="Decision timestamp boundaries">
+          <article role="listitem"><span>Data cutoff</span><strong id="trace-cutoff">—</strong><small>Latest visible bar</small></article>
+          <article role="listitem"><span>Decision</span><strong id="trace-decision-time">—</strong><small>Deterministic policy review</small></article>
+          <article role="listitem"><span>Execution</span><strong id="trace-execution-time">—</strong><small>Later paper bar</small></article>
+        </div>
+        <ol class="trace-stages" id="trace-stages" aria-label="Trace stages"><li>Loading deterministic trace…</li></ol>
+
+        <div class="trace-detail-grid">
+          <article class="trace-detail-card">
+            <div class="detail-heading"><span class="detail-index">A</span><div><p class="mini-label">Candidate book</p><h3>What could be proposed</h3></div></div>
+            <div id="trace-candidates" class="trace-list"></div>
+          </article>
+          <article class="trace-detail-card">
+            <div class="detail-heading"><span class="detail-index">B</span><div><p class="mini-label">Validation + fill</p><h3>What crossed the gate</h3></div></div>
+            <div id="trace-orders" class="trace-list"></div>
+          </article>
+          <article class="trace-detail-card ledger-card">
+            <div class="detail-heading"><span class="detail-index">C</span><div><p class="mini-label">Paper ledger</p><h3>What changed</h3></div></div>
+            <div class="ledger-compare">
+              <div><span>Before</span><strong id="trace-equity-before">—</strong><small id="trace-positions-before">—</small></div>
+              <span class="ledger-arrow" aria-hidden="true">→</span>
+              <div><span>After</span><strong id="trace-equity-after">—</strong><small id="trace-positions-after">—</small></div>
+            </div>
+            <p id="trace-ledger-delta" class="ledger-delta">—</p>
+          </article>
+        </div>
+        <p class="trace-caveat" id="trace-caveat">Synthetic trace loading…</p>
+      </div>
+    </section>
+
+    <section class="section controls-section" id="controls" aria-labelledby="controls-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span>Control proof</span> Fail closed, recover exactly once</p>
+          <h2 id="controls-title">Show the failures—not just the happy path.</h2>
+        </div>
+        <p class="section-intro">Fixed invalid intents run through the real validator. A separate SQLite drill interrupts the ledger twice, redelivers fills, and compares recovery with an uninterrupted baseline.</p>
+      </div>
+
+      <div class="controls-grid">
+        <article class="failure-panel">
+          <div class="control-panel-head">
+            <div><p class="mini-label">Risk failure lab</p><h3>Ten actions blocked for ten explicit reasons</h3></div>
+            <span class="control-count" id="failure-count">—</span>
+          </div>
+          <div class="failure-list" id="failure-list"><p>Loading real validator outcomes…</p></div>
+          <div class="terminal light-terminal" aria-label="Failure-lab command"><span aria-hidden="true">$</span><code>python scripts/run_risk_failure_lab.py --check</code></div>
+          <p class="control-footnote">A valid long-only control is approved to prove the lab is not a blanket deny-list. Synthetic enforcement evidence only.</p>
+        </article>
+
+        <article class="recovery-panel">
+          <div class="control-panel-head">
+            <div><p class="mini-label">Crash-recovery drill</p><h3>Same state after two interruptions</h3></div>
+            <span class="recovery-status" id="recovery-status">Verifying…</span>
+          </div>
+          <div class="recovery-metrics" aria-label="Recovery metrics">
+            <div><span>Durable events</span><strong id="recovery-events">—</strong></div>
+            <div><span>Duplicates suppressed</span><strong id="recovery-duplicates">—</strong></div>
+            <div><span>Final equity</span><strong id="recovery-equity">—</strong></div>
+          </div>
+          <ol class="recovery-timeline" id="recovery-timeline"><li>Loading recovery proof…</li></ol>
+          <div class="digest-line"><span>State digest</span><code id="recovery-digest">—</code></div>
+          <div class="terminal recovery-terminal" aria-label="Recovery-drill command"><span aria-hidden="true">$</span><code>python scripts/run_recovery_drill.py --check</code></div>
+          <p class="recovery-scope" id="recovery-scope">Transaction-level scope loading…</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+      <div class="demo-panel">
+        <div class="demo-copy">
+          <p class="eyebrow light"><span>Synthetic demonstration</span> Offline / deterministic / fast</p>
+          <h2 id="demo-title">Replay the control boundaries—not the historical headline.</h2>
+          <p>The committed fixture contains five mathematical price series and no observed market data. It exercises four review schedules, timestamp cutoffs, risk validation, next-bar paper fills, costs, and accounting without a model provider or broker.</p>
+          <div class="terminal" aria-label="Demo command">
+            <span aria-hidden="true">$</span><code>python scripts/run_showcase_replay.py --check</code>
+          </div>
+          <ul class="check-list">
+            <li>0 external model calls</li>
+            <li>0 broker connections</li>
+            <li>Dataset and replay artifacts hash-checked</li>
+          </ul>
+        </div>
+        <div class="demo-results">
+          <div class="demo-head">
+            <div><span class="live-dot" aria-hidden="true"></span> Committed replay artifact</div>
+            <span id="demo-window">2026-01-26 → 2026-02-13</span>
+          </div>
+          <div class="table-shell demo-table-shell" tabindex="0" aria-label="Scrollable synthetic replay table">
+            <table>
+              <thead><tr><th scope="col">Schedule</th><th scope="col">Calls</th><th scope="col">Fills</th><th scope="col">Return</th><th scope="col">Drawdown</th></tr></thead>
+              <tbody id="demo-body"><tr><td colspan="5">Loading local replay artifact…</td></tr></tbody>
+            </table>
+          </div>
+          <p class="demo-disclaimer">These synthetic returns have no financial meaning and do not reproduce the Feb–Jun tournament.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section protocol-section" id="protocol" aria-labelledby="protocol-title">
+      <div class="protocol-card">
+        <div>
+          <p class="eyebrow"><span>Next validation gate</span> Frozen prospective protocol</p>
+          <h2 id="protocol-title">One future paper window. No mid-window tuning.</h2>
+          <p>Version 1 freezes the open + close cadence, a fixed ETF universe, model/runtime, candidate policy, risk limits, next-bar execution, costs, and reporting rules. It is proposed, not activated, and requires a separate dated authorization record.</p>
+          <div class="protocol-tags" aria-label="Protocol controls">
+            <span>Paper ledger only</span><span>2 reviews / session</span><span>Fixed universe</span><span>Append-only log required</span>
+          </div>
+        </div>
+        <div class="digest-card">
+          <span class="mini-label">Configuration SHA-256</span>
+          <code id="protocol-digest">4624bd6ad15eb6895e533543398cb91e31185ac2f1ede13f50f15af111933509</code>
+          <span class="digest-status">Proposed · not started</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><span class="brand-mark small" aria-hidden="true">FB</span><strong>FINANCEBOT</strong></div>
+    <p>Quantitative-research and agent-evaluation case. Not investment advice, not an investable strategy, and not connected to live capital. <a href="../LICENSE">Apache-2.0</a>.</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <noscript><p class="noscript">JavaScript renders the local JSON chart, tables, decision trace, failure lab, and recovery drill. The headline evidence and every required caveat remain visible without it.</p></noscript>
+</body>
+</html>

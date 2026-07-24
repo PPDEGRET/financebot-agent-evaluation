@@ -1,0 +1,250 @@
+{
+  "broker_connections": 0,
+  "caveat": "This generated fixture exercises replay, invocation scheduling, validation, and accounting. Its performance has no financial meaning.",
+  "dataset_manifest_sha256": "21e1ab3e009f04ae33676f83dcd29394e0e48ac9ef4a52224fc9be41ae9602e9",
+  "decision_trace": {
+    "candidates": [
+      {
+        "action": "buy",
+        "confidence": 0.42059426,
+        "expected_net_edge_bps": 386.88512263,
+        "side": "buy",
+        "target_weight": 0.15795993,
+        "thesis": "Ensemble long target from labs ['static_momentum']; combined score 0.0173.",
+        "ticker": "SYN_ORBIT"
+      },
+      {
+        "action": "buy",
+        "confidence": 0.41224295,
+        "expected_net_edge_bps": 219.85908259,
+        "side": "buy",
+        "target_weight": 0.09204007,
+        "thesis": "Ensemble long target from labs ['static_momentum']; combined score 0.0101.",
+        "ticker": "SYN_CEDAR"
+      }
+    ],
+    "caveat": "This trace uses generated prices and a deterministic policy. It demonstrates control flow, not historical model behavior or financial performance.",
+    "context": {
+      "available_through": "2026-01-23T15:30:00",
+      "candidate_count": 2,
+      "regime_multiplier": 0.25,
+      "visible_prices": {
+        "SYN_CEDAR": 77.976866,
+        "SYN_ORBIT": 54.864856
+      }
+    },
+    "data_cutoff": "2026-01-23T15:30:00",
+    "decision": {
+      "approved_tickers": [
+        "SYN_ORBIT",
+        "SYN_CEDAR"
+      ],
+      "confidence": 0.6,
+      "rejected_candidates": 0,
+      "summary": "Policy agent style=approve_all."
+    },
+    "decision_time": "2026-01-26T09:30:00",
+    "execution_time": "2026-01-26T10:30:00",
+    "external_model_calls": 0,
+    "fills": [
+      {
+        "commission": 1.56659789,
+        "execution_price": 55.16189761,
+        "execution_time": "2026-01-26T10:30:00",
+        "quantity": 71,
+        "side": "buy",
+        "slippage_bps": 3.0,
+        "ticker": "SYN_ORBIT",
+        "venue": "paper"
+      },
+      {
+        "commission": 0.90629435,
+        "execution_price": 78.12882362,
+        "execution_time": "2026-01-26T10:30:00",
+        "quantity": 29,
+        "side": "buy",
+        "slippage_bps": 3.0,
+        "ticker": "SYN_CEDAR",
+        "venue": "paper"
+      }
+    ],
+    "label": "Synthetic demonstration",
+    "ledger_after": {
+      "cash": 93815.2964928,
+      "equity": 99995.6729948,
+      "fill_count": 2,
+      "market_value": 6180.376502,
+      "positions": [
+        {
+          "avg_cost": 78.12882362,
+          "last_price": 78.105392,
+          "market_value": 2265.056368,
+          "quantity": 29,
+          "ticker": "SYN_CEDAR"
+        },
+        {
+          "avg_cost": 55.16189761,
+          "last_price": 55.145354,
+          "market_value": 3915.320134,
+          "quantity": 71,
+          "ticker": "SYN_ORBIT"
+        }
+      ]
+    },
+    "ledger_before": {
+      "cash": 100000.0,
+      "equity": 100000.0,
+      "fill_count": 0,
+      "market_value": 0.0,
+      "positions": []
+    },
+    "ledger_delta": {
+      "cash": -6184.7035072,
+      "equity": -4.3270052,
+      "fills": 2,
+      "market_value": 6180.376502
+    },
+    "policy": "deterministic approve_all",
+    "review_schedule": "09:30 and 15:30 synthetic ET",
+    "stages": [
+      {
+        "index": 1,
+        "name": "Bound context",
+        "status": "available_at enforced"
+      },
+      {
+        "index": 2,
+        "name": "Generate candidates",
+        "status": "2 deterministic intents"
+      },
+      {
+        "index": 3,
+        "name": "Policy review",
+        "status": "structured approval; no model call"
+      },
+      {
+        "index": 4,
+        "name": "Risk validation",
+        "status": "2 approved by real validator"
+      },
+      {
+        "index": 5,
+        "name": "Next-bar fills",
+        "status": "2 paper fills with costs"
+      },
+      {
+        "index": 6,
+        "name": "Ledger snapshot",
+        "status": "cash + positions reconciled"
+      }
+    ],
+    "strict_timestamp_ordering": true,
+    "trace_sha256": "33e1fa6600f6554fabf7efb41c2f1fc40b83025223330b3390a08e0e1143c0fd",
+    "trace_variant": "open_close",
+    "validations": [
+      {
+        "approved": true,
+        "estimated_fees": 1.55816191,
+        "estimated_slippage": 1.16862143,
+        "issues": [
+          {
+            "code": "APPROVED",
+            "message": "Order passed deterministic risk checks.",
+            "severity": "info"
+          }
+        ],
+        "quantity": 71,
+        "ticker": "SYN_ORBIT",
+        "visible_price": 54.864856
+      },
+      {
+        "approved": true,
+        "estimated_fees": 0.90453165,
+        "estimated_slippage": 0.67839873,
+        "issues": [
+          {
+            "code": "APPROVED",
+            "message": "Order passed deterministic risk checks.",
+            "severity": "info"
+          }
+        ],
+        "quantity": 29,
+        "ticker": "SYN_CEDAR",
+        "visible_price": 77.976866
+      }
+    ]
+  },
+  "execution_assumption": "Decisions see only the previous bar; approved orders fill on the next synthetic bar with configured costs and slippage.",
+  "external_model_calls": 0,
+  "historical_result_reproduction": false,
+  "label": "Synthetic demonstration",
+  "mode": "offline_deterministic_policy_and_paper_ledger",
+  "schema_version": 1,
+  "showcase_config_sha256": "e8d56190df07768f051543fd93f37056b7ec40bd88089ad5315c1c13bd71ff36",
+  "variants": [
+    {
+      "approved_validations": 42,
+      "candidate_intents": 302,
+      "fills": 11,
+      "final_equity": 100358.4921096,
+      "id": "daily_open",
+      "label": "Open only",
+      "max_drawdown": -0.0007595,
+      "policy_calls": 15,
+      "rejected_validations": 1,
+      "reported_sharpe": 2.48726174,
+      "review_schedule": "09:30 synthetic ET",
+      "simulated_return": 0.00358492,
+      "synthetic_benchmark_return": 0.00085473
+    },
+    {
+      "approved_validations": 83,
+      "candidate_intents": 300,
+      "fills": 17,
+      "final_equity": 100413.01704188,
+      "id": "open_close",
+      "label": "Open + close",
+      "max_drawdown": -0.00077442,
+      "policy_calls": 29,
+      "rejected_validations": 0,
+      "reported_sharpe": 2.64715686,
+      "review_schedule": "09:30 and 15:30 synthetic ET",
+      "simulated_return": 0.00413017,
+      "synthetic_benchmark_return": 0.00085473
+    },
+    {
+      "approved_validations": 126,
+      "candidate_intents": 297,
+      "fills": 20,
+      "final_equity": 100344.02794903,
+      "id": "three_times_day",
+      "label": "Three times daily",
+      "max_drawdown": -0.00110259,
+      "policy_calls": 44,
+      "rejected_validations": 0,
+      "reported_sharpe": 2.10800382,
+      "review_schedule": "09:30, 12:30, and 15:30 synthetic ET",
+      "simulated_return": 0.00344028,
+      "synthetic_benchmark_return": 0.00085473
+    },
+    {
+      "approved_validations": 290,
+      "candidate_intents": 290,
+      "fills": 49,
+      "final_equity": 100361.86327785,
+      "id": "every_hour",
+      "label": "Hourly",
+      "max_drawdown": -0.00110503,
+      "policy_calls": 104,
+      "rejected_validations": 0,
+      "reported_sharpe": 2.02310292,
+      "review_schedule": "Every synthetic market-hour bar",
+      "simulated_return": 0.00361863,
+      "synthetic_benchmark_return": 0.00085473
+    }
+  ],
+  "window": {
+    "end": "2026-02-13",
+    "start": "2026-01-26"
+  }
+}

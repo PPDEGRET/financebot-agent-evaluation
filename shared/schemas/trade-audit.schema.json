@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TradeAudit",
+  "type": "object",
+  "required": ["audit_id", "intent_id", "created_at", "status", "validator_passed", "reasons"],
+  "properties": {
+    "audit_id": {"type": "string"},
+    "intent_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "status": {"enum": ["approved", "rejected", "filled", "cancelled", "paper_filled", "no_order"]},
+    "validator_passed": {"type": "boolean"},
+    "reasons": {"type": "array", "items": {"type": "string"}},
+    "order": {"type": ["object", "null"]},
+    "fill": {"type": ["object", "null"]},
+    "portfolio_snapshot": {"type": ["object", "null"]}
+  }
+}

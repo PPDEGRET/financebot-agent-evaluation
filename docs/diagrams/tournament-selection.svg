@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="735" viewBox="0 0 1200 735" role="img" aria-labelledby="title desc">
+  <title id="title">FINANCEBOT tournament selection and comparison</title>
+  <desc id="desc">Five January cadence variants form a selection arena. Three are promoted and hourly is retained as a comparison. The February through June open plus close result is 26.34 percent simulated return, negative 21.65 percent maximum drawdown, reported Sharpe 0.47, versus QQQ at 15.54 percent. It carries current-listing-universe bias, paper execution assumptions, January selection and repeated-testing risk, a short regime, non-deterministic model decisions, and no live capital.</desc>
+  <defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#60707d"/></marker></defs>
+  <rect width="1200" height="675" fill="#f4f1e9"/>
+  <text x="60" y="58" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="800" fill="#c93218" letter-spacing="2">TOURNAMENT SELECTION</text>
+  <text x="60" y="106" font-family="Inter,Segoe UI,sans-serif" font-size="38" font-weight="800" fill="#0c1824">Selection evidence is not final evidence</text>
+  <text x="60" y="140" font-family="Inter,Segoe UI,sans-serif" font-size="17" fill="#60707d">January chose variants. February–June compared them. Repeated inspection keeps the second window from being pristine.</text>
+
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <rect x="60" y="194" width="340" height="362" rx="24" fill="#fffdf8" stroke="#cfc9bb"/>
+    <text x="88" y="230" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.4">JAN 02–30 · SELECTION ARENA</text>
+    <text x="88" y="267" font-size="24" font-weight="800" fill="#0c1824">Five invocation schedules</text>
+    <g font-size="14">
+      <rect x="88" y="296" width="284" height="40" rx="8" fill="#f9d7cf"/><text x="104" y="322" font-weight="800" fill="#671c1c">Open + close</text><text x="350" y="322" text-anchor="end" fill="#671c1c">+25.07%</text>
+      <rect x="88" y="346" width="284" height="40" rx="8" fill="#e5f5ef"/><text x="104" y="372" font-weight="800" fill="#08705c">Open only</text><text x="350" y="372" text-anchor="end" fill="#08705c">+25.00%</text>
+      <rect x="88" y="396" width="284" height="40" rx="8" fill="#e5f5ef"/><text x="104" y="422" font-weight="800" fill="#08705c">Three times daily</text><text x="350" y="422" text-anchor="end" fill="#08705c">+22.51%</text>
+      <rect x="88" y="446" width="284" height="40" rx="8" fill="#ece8dd"/><text x="104" y="472" font-weight="800" fill="#223242">Hourly</text><text x="350" y="472" text-anchor="end" fill="#223242">+17.43%</text>
+      <rect x="88" y="496" width="284" height="40" rx="8" fill="#ece8dd"/><text x="104" y="522" font-weight="800" fill="#223242">Candidate / event</text><text x="350" y="522" text-anchor="end" fill="#b62d2d">−6.58%</text>
+    </g>
+
+    <rect x="488" y="250" width="224" height="250" rx="24" fill="#0c1824"/>
+    <text x="514" y="286" font-size="12" font-weight="800" fill="#9de4cb" letter-spacing="1.4">PROMOTION</text>
+    <text x="514" y="326" font-size="23" font-weight="800" fill="#fffdf8">Advance top 3</text>
+    <text x="514" y="363" font-size="14" fill="#d8e2e6">Open + close</text>
+    <text x="514" y="391" font-size="14" fill="#d8e2e6">Open only</text>
+    <text x="514" y="419" font-size="14" fill="#d8e2e6">Three times daily</text>
+    <line x1="514" y1="441" x2="686" y2="441" stroke="#334351"/>
+    <text x="514" y="468" font-size="12" fill="#e3b64b">+ hourly comparison</text>
+
+    <rect x="800" y="194" width="340" height="362" rx="24" fill="#fffdf8" stroke="#cfc9bb"/>
+    <text x="828" y="230" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.4">FEB 02–JUN 17 · COMPARISON</text>
+    <text x="828" y="267" font-size="24" font-weight="800" fill="#0c1824">Cadence result</text>
+    <g font-size="14">
+      <rect x="828" y="296" width="284" height="52" rx="10" fill="#ff5a36"/><text x="844" y="319" font-weight="800" fill="#fff">Open + close</text><text x="1092" y="319" text-anchor="end" font-weight="800" fill="#fff">+26.34%</text><text x="844" y="338" font-size="11" fill="#fff1ed">190 calls · −21.65% drawdown</text>
+      <rect x="828" y="360" width="284" height="44" rx="8" fill="#ece8dd"/><text x="844" y="387" font-weight="800" fill="#223242">Open only</text><text x="1092" y="387" text-anchor="end" fill="#223242">+11.26%</text>
+      <rect x="828" y="416" width="284" height="44" rx="8" fill="#ece8dd"/><text x="844" y="443" font-weight="800" fill="#223242">Three times daily</text><text x="1092" y="443" text-anchor="end" fill="#b62d2d">−8.42%</text>
+      <rect x="828" y="472" width="284" height="44" rx="8" fill="#ece8dd"/><text x="844" y="499" font-weight="800" fill="#223242">Hourly · 665 calls</text><text x="1092" y="499" text-anchor="end" fill="#223242">+2.60%</text>
+    </g>
+  </g>
+  <g fill="none" stroke="#60707d" stroke-width="2" marker-end="url(#arr)"><path d="M400 375 H475"/><path d="M712 375 H787"/></g>
+  <rect x="60" y="578" width="1080" height="118" rx="14" fill="#f9d7cf"/>
+  <text x="84" y="606" font-family="Inter,Segoe UI,sans-serif" font-size="12" font-weight="800" fill="#b62d2d" letter-spacing="1.3">REQUIRED RESULT CONTEXT</text>
+  <text x="84" y="632" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="800" fill="#671c1c">+26.34% simulated return · −21.65% maximum drawdown · reported Sharpe 0.47 · QQQ +15.54%</text>
+  <text x="84" y="657" font-family="Inter,Segoe UI,sans-serif" font-size="12" fill="#671c1c">Current-listing-universe bias · paper execution assumptions · January selection / repeated-testing risk · short historical regime</text>
+  <text x="84" y="680" font-family="Inter,Segoe UI,sans-serif" font-size="12" fill="#671c1c">Non-deterministic model decisions · no live capital · promising, caveated simulator evidence—not an investable strategy.</text>
+</svg>

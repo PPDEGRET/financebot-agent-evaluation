@@ -1,0 +1,43 @@
+showcase:
+  label: Synthetic demonstration
+  mode: offline
+  external_model_calls: false
+  network_data_downloads: false
+  broker_connections: false
+
+replay:
+  start: "2026-01-26"
+  end: "2026-02-13"
+  review_schedules:
+    - daily_open
+    - open_close
+    - three_times_day
+    - every_hour
+  initial_cash: 100000.0
+
+execution:
+  mode: paper_ledger
+  transaction_cost_bps: 4.0
+  slippage_bps: 3.0
+  fill_timing: next_synthetic_bar
+
+risk:
+  max_position_weight: 0.22
+  max_order_notional_pct: 0.22
+  max_sector_weight: 0.44
+  min_cash_buffer_pct: 0.08
+  max_positions: 4
+  min_price: 1.0
+  min_adv_dollars: 0.0
+  allow_short: false
+  allow_margin: false
+
+strategy:
+  lab: static_momentum
+  lookback_bars: 12
+  top_n: 3
+  rebalance_threshold: 0.015
+  max_name_weight: 0.22
+  regime_benchmark: SYN_BENCH
+  regime_fast_window: 5
+  regime_slow_window: 20

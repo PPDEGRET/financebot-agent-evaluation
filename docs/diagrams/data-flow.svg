@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">FINANCEBOT timestamp-safe data flow</title>
+  <desc id="desc">At t minus one data is visible. At t candidates and an agent decision are created. At t plus one an approved order can fill in the paper ledger and its stable fill ID can enter the SQLite recovery journal. Future data never enters the decision context.</desc>
+  <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#60707d"/></marker></defs>
+  <rect width="1200" height="675" fill="#fffdf8"/>
+  <text x="62" y="60" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="800" fill="#c93218" letter-spacing="2">DATA FLOW</text>
+  <text x="62" y="108" font-family="Inter,Segoe UI,sans-serif" font-size="38" font-weight="800" fill="#0c1824">One-bar separation is the anti-leakage rule</text>
+  <text x="62" y="142" font-family="Inter,Segoe UI,sans-serif" font-size="17" fill="#60707d">The replay deliberately gives up freshness so a close-derived bar cannot be used to fill at that same bar.</text>
+
+  <line x1="104" y1="286" x2="1094" y2="286" stroke="#cfc9bb" stroke-width="4"/>
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <circle cx="164" cy="286" r="16" fill="#08705c"/><text x="164" y="291" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">1</text>
+    <text x="164" y="238" text-anchor="middle" font-size="13" font-weight="800" fill="#08705c">t−1 · DATA CUTOFF</text>
+    <rect x="62" y="330" width="204" height="148" rx="18" fill="#f4f1e9" stroke="#cfc9bb"/>
+    <text x="84" y="362" font-size="12" font-weight="800" fill="#60707d">VISIBLE CONTEXT</text>
+    <text x="84" y="394" font-size="17" font-weight="800" fill="#0c1824">History through t−1</text>
+    <text x="84" y="425" font-size="14" fill="#223242">Prices · volume · positions</text>
+    <text x="84" y="451" font-size="14" fill="#223242">available_at ≤ cutoff</text>
+
+    <circle cx="448" cy="286" r="16" fill="#ff5a36"/><text x="448" y="291" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">2</text>
+    <text x="448" y="238" text-anchor="middle" font-size="13" font-weight="800" fill="#c93218">t · DECISION</text>
+    <rect x="322" y="330" width="252" height="148" rx="18" fill="#0c1824"/>
+    <text x="344" y="362" font-size="12" font-weight="800" fill="#9de4cb">REVIEW WINDOW</text>
+    <text x="344" y="394" font-size="17" font-weight="800" fill="#fffdf8">Candidate → structured intent</text>
+    <text x="344" y="425" font-size="14" fill="#d3dee2">Cadence decides whether to call</text>
+    <text x="344" y="451" font-size="14" fill="#d3dee2">Malformed output → no trade</text>
+
+    <circle cx="728" cy="286" r="16" fill="#e3b64b"/><text x="728" y="291" text-anchor="middle" font-size="13" font-weight="800" fill="#0c1824">3</text>
+    <text x="728" y="238" text-anchor="middle" font-size="13" font-weight="800" fill="#765900">t · VALIDATION</text>
+    <rect x="624" y="330" width="208" height="148" rx="18" fill="#f4f1e9" stroke="#e3b64b" stroke-width="2"/>
+    <text x="646" y="362" font-size="12" font-weight="800" fill="#765900">DETERMINISTIC GATE</text>
+    <text x="646" y="394" font-size="17" font-weight="800" fill="#0c1824">Approve or reject</text>
+    <text x="646" y="425" font-size="14" fill="#223242">Risk + cash + exposure</text>
+    <text x="646" y="451" font-size="14" fill="#223242">No model override</text>
+
+    <circle cx="1014" cy="286" r="16" fill="#3178c6"/><text x="1014" y="291" text-anchor="middle" font-size="13" font-weight="800" fill="#fff">4</text>
+    <text x="1014" y="238" text-anchor="middle" font-size="13" font-weight="800" fill="#245b94">t+1 · EXECUTION</text>
+    <rect x="890" y="330" width="248" height="148" rx="18" fill="#f4f1e9" stroke="#3178c6" stroke-width="2"/>
+    <text x="912" y="362" font-size="12" font-weight="800" fill="#245b94">PAPER LEDGER</text>
+    <text x="912" y="394" font-size="17" font-weight="800" fill="#0c1824">Fill at next bar</text>
+    <text x="912" y="425" font-size="14" fill="#223242">Costs + slippage applied</text>
+    <text x="912" y="451" font-size="14" fill="#223242">Journal fill ID + snapshot</text>
+  </g>
+  <g fill="none" stroke="#60707d" stroke-width="2" marker-end="url(#a)">
+    <path d="M266 404 H310"/><path d="M574 404 H612"/><path d="M832 404 H878"/>
+  </g>
+  <rect x="62" y="546" width="1076" height="66" rx="14" fill="#f9d7cf"/>
+  <text x="600" y="574" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="14" font-weight="800" fill="#b62d2d">FORBIDDEN</text>
+  <text x="600" y="598" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="15" fill="#671c1c">Using the t+1 execution bar, future labels, or later universe membership in the t decision context</text>
+</svg>

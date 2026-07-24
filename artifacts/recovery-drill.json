@@ -1,0 +1,164 @@
+{
+  "broker_connections": 0,
+  "duplicate_deliveries_attempted": 3,
+  "duplicate_deliveries_suppressed": 3,
+  "durable_events": 4,
+  "events": [
+    {
+      "event_hash": "ed74614ef4afee611e729658642031fbf63468e02e6c8cbae8155e84644602b9",
+      "fill_id": "fill_recovery_001",
+      "filled_at": "2026-02-17T10:30:00+00:00",
+      "idempotency_key": "paper-fill-001",
+      "payload_sha256": "5b52e77aba04acc7144f2dfaf7f3a86734415530f20bded63e720321299ee811",
+      "previous_hash": "f2d716f45e66361eff7f9103b8558d92d9520f0f1e1641ee3e927e04bc53b7dd",
+      "quantity": 120,
+      "sequence": 1,
+      "side": "buy",
+      "ticker": "SYN_ORBIT"
+    },
+    {
+      "event_hash": "07651c9e493bf5a994be4041aa49d655041701e785f2ae07b494fa99a05f1ba1",
+      "fill_id": "fill_recovery_002",
+      "filled_at": "2026-02-17T15:30:00+00:00",
+      "idempotency_key": "paper-fill-002",
+      "payload_sha256": "dff5f9764bddd0c35aab7783f30ba3d30a4f1051ba9aac06c5a55c21e890ca9f",
+      "previous_hash": "ed74614ef4afee611e729658642031fbf63468e02e6c8cbae8155e84644602b9",
+      "quantity": 80,
+      "sequence": 2,
+      "side": "buy",
+      "ticker": "SYN_CEDAR"
+    },
+    {
+      "event_hash": "c3cbd61c89e366a87ece66b45f4f9caeca2a2fef2bb9952a232d4cf688b178f8",
+      "fill_id": "fill_recovery_003",
+      "filled_at": "2026-02-18T10:30:00+00:00",
+      "idempotency_key": "paper-fill-003",
+      "payload_sha256": "47562e9efe77c3173bd827990660fde73713553676a61a0b1c62f39f3e72baf3",
+      "previous_hash": "07651c9e493bf5a994be4041aa49d655041701e785f2ae07b494fa99a05f1ba1",
+      "quantity": 20,
+      "sequence": 3,
+      "side": "sell",
+      "ticker": "SYN_ORBIT"
+    },
+    {
+      "event_hash": "29a78201ed794a5d0aa23d012770266a48f7b660937b9ca28e261a25d0438102",
+      "fill_id": "fill_recovery_004",
+      "filled_at": "2026-02-18T15:30:00+00:00",
+      "idempotency_key": "paper-fill-004",
+      "payload_sha256": "d550474ee5b24350cbef35b074365cebd277b8d6925b2e67526abe8bf63c70b7",
+      "previous_hash": "c3cbd61c89e366a87ece66b45f4f9caeca2a2fef2bb9952a232d4cf688b178f8",
+      "quantity": 100,
+      "sequence": 4,
+      "side": "buy",
+      "ticker": "SYN_HARBOR"
+    }
+  ],
+  "exact_state_match": true,
+  "external_model_calls": 0,
+  "initial_cash": 100000.0,
+  "journal_head_sha256": "29a78201ed794a5d0aa23d012770266a48f7b660937b9ca28e261a25d0438102",
+  "journal_verified": true,
+  "label": "Synthetic demonstration",
+  "mode": "sqlite_fill_journal_recovery_drill",
+  "recovered_state": {
+    "cash": 85896.94,
+    "equity": 100956.94,
+    "fill_count": 4,
+    "market_value": 15060.0,
+    "positions": [
+      {
+        "avg_cost": 70.0,
+        "last_price": 72.0,
+        "market_value": 5760.0,
+        "quantity": 80,
+        "realized_pnl": 0.0,
+        "ticker": "SYN_CEDAR"
+      },
+      {
+        "avg_cost": 36.0,
+        "last_price": 37.0,
+        "market_value": 3700.0,
+        "quantity": 100,
+        "realized_pnl": 0.0,
+        "ticker": "SYN_HARBOR"
+      },
+      {
+        "avg_cost": 50.0,
+        "last_price": 56.0,
+        "market_value": 5600.0,
+        "quantity": 100,
+        "realized_pnl": 99.78,
+        "ticker": "SYN_ORBIT"
+      }
+    ]
+  },
+  "recovered_state_sha256": "91d49429603d7b820edfd50542e858a75503a9e8675dc771b61c59fc07b69bca",
+  "schema_version": 1,
+  "scope_boundary": "This proves transaction-level paper-fill recovery only. It does not recover model sessions, pending decisions, tournament scheduling, or external broker state.",
+  "simulated_interruptions": 2,
+  "timeline": [
+    {
+      "detail": "2 durable events before interruption.",
+      "label": "Commit first two fills",
+      "step": 1
+    },
+    {
+      "detail": "Restored 2 fills before any redelivery.",
+      "label": "Restart from SQLite",
+      "step": 2
+    },
+    {
+      "detail": "The first two stable fill IDs were redelivered and produced no new ledger events.",
+      "label": "Suppress duplicate delivery",
+      "step": 3
+    },
+    {
+      "detail": "Fill 3 reached SQLite (3 events) before in-memory application.",
+      "label": "Interrupt after durable commit",
+      "step": 4
+    },
+    {
+      "detail": "Restart recovered 3 fills, suppressed fill 3 redelivery, then committed fill 4.",
+      "label": "Restore and finish",
+      "step": 5
+    },
+    {
+      "detail": "Cash, positions, fill count, realized P&L, and marked equity matched exactly.",
+      "label": "Compare with uninterrupted baseline",
+      "step": 6
+    }
+  ],
+  "uninterrupted_state": {
+    "cash": 85896.94,
+    "equity": 100956.94,
+    "fill_count": 4,
+    "market_value": 15060.0,
+    "positions": [
+      {
+        "avg_cost": 70.0,
+        "last_price": 72.0,
+        "market_value": 5760.0,
+        "quantity": 80,
+        "realized_pnl": 0.0,
+        "ticker": "SYN_CEDAR"
+      },
+      {
+        "avg_cost": 36.0,
+        "last_price": 37.0,
+        "market_value": 3700.0,
+        "quantity": 100,
+        "realized_pnl": 0.0,
+        "ticker": "SYN_HARBOR"
+      },
+      {
+        "avg_cost": 50.0,
+        "last_price": 56.0,
+        "market_value": 5600.0,
+        "quantity": 100,
+        "realized_pnl": 99.78,
+        "ticker": "SYN_ORBIT"
+      }
+    ]
+  },
+  "uninterrupted_state_sha256": "91d49429603d7b820edfd50542e858a75503a9e8675dc771b61c59fc07b69bca"
+}

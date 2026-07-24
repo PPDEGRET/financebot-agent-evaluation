@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SelfImprovementProposal",
+  "type": "object",
+  "required": ["proposal_id", "proposer_agent_id", "created_at", "affected_paths", "hypothesis", "validation_plan", "status"],
+  "properties": {
+    "proposal_id": {"type": "string"},
+    "proposer_agent_id": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "affected_paths": {"type": "array", "items": {"type": "string"}},
+    "hypothesis": {"type": "string"},
+    "validation_plan": {"type": "string"},
+    "forbidden_data_windows": {"type": "array", "items": {"type": "string"}},
+    "expected_metric": {"type": "string"},
+    "status": {"enum": ["draft", "approved_for_experiment", "rejected", "promoted", "quarantined"]}
+  }
+}

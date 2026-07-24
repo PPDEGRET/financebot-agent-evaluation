@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">FINANCEBOT system architecture</title>
+  <desc id="desc">Timestamp-bounded research data feeds deterministic labs and an optional model reviewer. Structured trade intents then pass through deterministic risk validation, later-bar paper execution, ledger accounting, and an idempotent SQLite fill journal before aggregate evidence is reported.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#60707d"/></marker>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#0c1824" flood-opacity=".10"/></filter>
+  </defs>
+  <rect width="1200" height="675" fill="#f4f1e9"/>
+  <text x="64" y="62" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="800" fill="#c93218" letter-spacing="2">SYSTEM ARCHITECTURE</text>
+  <text x="64" y="112" font-family="Inter,Segoe UI,sans-serif" font-size="38" font-weight="800" fill="#0c1824">Model judgment inside deterministic rails</text>
+  <text x="64" y="145" font-family="Inter,Segoe UI,sans-serif" font-size="17" fill="#60707d">The model can propose; it cannot advance time, size outside limits, or write to a broker in showcase mode.</text>
+
+  <g filter="url(#shadow)" font-family="Inter,Segoe UI,sans-serif">
+    <rect x="64" y="218" width="210" height="270" rx="22" fill="#fffdf8" stroke="#cfc9bb"/>
+    <text x="88" y="252" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.5">RESEARCH INPUT</text>
+    <text x="88" y="292" font-size="24" font-weight="800" fill="#0c1824">Available-at data</text>
+    <line x1="88" y1="313" x2="246" y2="313" stroke="#ece8dd"/>
+    <text x="88" y="345" font-size="15" fill="#223242">Daily + hourly prices</text>
+    <text x="88" y="377" font-size="15" fill="#223242">Volume + metadata</text>
+    <text x="88" y="409" font-size="15" fill="#223242">Timestamp boundaries</text>
+    <rect x="88" y="438" width="142" height="28" rx="14" fill="#cef2e5"/>
+    <text x="159" y="457" text-anchor="middle" font-size="11" font-weight="800" fill="#08705c">data cutoff ≤ t−1</text>
+
+    <rect x="330" y="218" width="236" height="270" rx="22" fill="#0c1824"/>
+    <text x="354" y="252" font-size="12" font-weight="800" fill="#9de4cb" letter-spacing="1.5">JUDGMENT LAYER</text>
+    <text x="354" y="292" font-size="24" font-weight="800" fill="#fffdf8">Candidate + review</text>
+    <line x1="354" y1="313" x2="542" y2="313" stroke="#334351"/>
+    <text x="354" y="345" font-size="15" fill="#d8e2e6">Deterministic labs</text>
+    <text x="354" y="377" font-size="15" fill="#d8e2e6">Portfolio optimizer</text>
+    <text x="354" y="409" font-size="15" fill="#d8e2e6">Model or policy reviewer</text>
+    <rect x="354" y="438" width="132" height="28" rx="14" fill="#ff5a36"/>
+    <text x="420" y="457" text-anchor="middle" font-size="11" font-weight="800" fill="#fff">TradeIntent JSON</text>
+
+    <rect x="622" y="194" width="250" height="318" rx="22" fill="#fffdf8" stroke="#ff5a36" stroke-width="3"/>
+    <text x="648" y="230" font-size="12" font-weight="800" fill="#c93218" letter-spacing="1.5">DETERMINISTIC AUTHORITY</text>
+    <text x="648" y="270" font-size="24" font-weight="800" fill="#0c1824">Risk + execution</text>
+    <line x1="648" y1="291" x2="846" y2="291" stroke="#ece8dd"/>
+    <text x="648" y="325" font-size="15" fill="#223242">Long-only validator</text>
+    <text x="648" y="357" font-size="15" fill="#223242">Cash / name / sector caps</text>
+    <text x="648" y="389" font-size="15" fill="#223242">Next-bar paper fill</text>
+    <text x="648" y="421" font-size="15" fill="#223242">Costs + slippage</text>
+    <text x="648" y="453" font-size="15" fill="#223242">Ledger + SQLite fill journal</text>
+    <rect x="648" y="472" width="164" height="24" rx="12" fill="#f9d7cf"/>
+    <text x="730" y="489" text-anchor="middle" font-size="10" font-weight="800" fill="#b62d2d">Broker blocked in showcase</text>
+
+    <rect x="928" y="218" width="208" height="270" rx="22" fill="#fffdf8" stroke="#cfc9bb"/>
+    <text x="952" y="252" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.5">EVIDENCE</text>
+    <text x="952" y="292" font-size="24" font-weight="800" fill="#0c1824">Measure honestly</text>
+    <line x1="952" y1="313" x2="1112" y2="313" stroke="#ece8dd"/>
+    <text x="952" y="345" font-size="15" fill="#223242">Return + drawdown</text>
+    <text x="952" y="377" font-size="15" fill="#223242">Reported Sharpe</text>
+    <text x="952" y="409" font-size="15" fill="#223242">Calls + fills</text>
+    <text x="952" y="441" font-size="15" fill="#223242">Benchmarks + caveats</text>
+  </g>
+
+  <g stroke="#60707d" stroke-width="2" fill="none" marker-end="url(#arrow)">
+    <path d="M274 353 H318"/>
+    <path d="M566 353 H610"/>
+    <path d="M872 353 H916"/>
+  </g>
+  <rect x="64" y="568" width="1072" height="54" rx="14" fill="#e8e3d7"/>
+  <text x="600" y="600" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="15" font-weight="700" fill="#223242">Audit boundary: decision time → data cutoff → validation → execution time → portfolio snapshot</text>
+</svg>

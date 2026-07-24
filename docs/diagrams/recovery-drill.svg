@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-labelledby="title desc">
+  <title id="title">FINANCEBOT paper-fill recovery drill</title>
+  <desc id="desc">An uninterrupted four-fill paper ledger is compared with a SQLite journal that is interrupted twice. Stable fill IDs suppress three duplicate deliveries, the hash chain verifies, and restored cash, positions, fills, realized profit and marked equity match exactly. Model sessions and tournament state remain outside this recovery scope.</desc>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#60707d"/></marker></defs>
+  <rect width="1200" height="675" fill="#f4f1e9"/>
+  <text x="60" y="58" font-family="Inter,Segoe UI,sans-serif" font-size="16" font-weight="800" fill="#c93218" letter-spacing="2">RECOVERY DRILL</text>
+  <text x="60" y="106" font-family="Inter,Segoe UI,sans-serif" font-size="38" font-weight="800" fill="#0c1824">Exactly-once paper fills across interruption</text>
+  <text x="60" y="140" font-family="Inter,Segoe UI,sans-serif" font-size="17" fill="#60707d">SQLite is the durable source of truth; the in-memory ledger is rebuilt only from a verified append-only chain.</text>
+
+  <g font-family="Inter,Segoe UI,sans-serif">
+    <text x="60" y="205" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.4">UNINTERRUPTED BASELINE</text>
+    <rect x="60" y="226" width="1080" height="92" rx="18" fill="#fffdf8" stroke="#cfc9bb"/>
+    <g font-size="13" font-weight="800" fill="#223242">
+      <rect x="88" y="250" width="126" height="42" rx="9" fill="#ece8dd"/><text x="151" y="276" text-anchor="middle">Fill 1 · buy</text>
+      <rect x="254" y="250" width="126" height="42" rx="9" fill="#ece8dd"/><text x="317" y="276" text-anchor="middle">Fill 2 · buy</text>
+      <rect x="420" y="250" width="126" height="42" rx="9" fill="#ece8dd"/><text x="483" y="276" text-anchor="middle">Fill 3 · sell</text>
+      <rect x="586" y="250" width="126" height="42" rx="9" fill="#ece8dd"/><text x="649" y="276" text-anchor="middle">Fill 4 · buy</text>
+      <rect x="816" y="244" width="290" height="54" rx="12" fill="#d9f2e9"/><text x="961" y="267" text-anchor="middle" fill="#08705c">STATE A · 91d494…</text><text x="961" y="286" text-anchor="middle" font-size="10" fill="#08705c">cash · positions · P&amp;L · equity</text>
+    </g>
+    <g fill="none" stroke="#60707d" stroke-width="2" marker-end="url(#arrow)"><path d="M214 271 H242"/><path d="M380 271 H408"/><path d="M546 271 H574"/><path d="M712 271 H804"/></g>
+
+    <text x="60" y="367" font-size="12" font-weight="800" fill="#60707d" letter-spacing="1.4">INTERRUPTED + REDELIVERED</text>
+    <rect x="60" y="388" width="1080" height="174" rx="18" fill="#0c1824"/>
+    <g font-size="12" font-weight="800">
+      <rect x="88" y="416" width="146" height="48" rx="9" fill="#173042"/><text x="161" y="436" text-anchor="middle" fill="#fffdf8">Commit fills 1–2</text><text x="161" y="452" text-anchor="middle" font-size="10" fill="#9de4cb">hash chain · 2 events</text>
+      <rect x="273" y="416" width="92" height="48" rx="24" fill="#ff5a36"/><text x="319" y="445" text-anchor="middle" fill="#fff">CRASH 1</text>
+      <rect x="404" y="416" width="154" height="48" rx="9" fill="#173042"/><text x="481" y="436" text-anchor="middle" fill="#fffdf8">Restore + replay</text><text x="481" y="452" text-anchor="middle" font-size="10" fill="#9de4cb">2 duplicates ignored</text>
+      <rect x="597" y="416" width="154" height="48" rx="9" fill="#173042"/><text x="674" y="436" text-anchor="middle" fill="#fffdf8">Commit fill 3</text><text x="674" y="452" text-anchor="middle" font-size="10" fill="#9de4cb">durable before memory</text>
+      <rect x="790" y="416" width="92" height="48" rx="24" fill="#ff5a36"/><text x="836" y="445" text-anchor="middle" fill="#fff">CRASH 2</text>
+      <rect x="921" y="416" width="185" height="48" rx="9" fill="#173042"/><text x="1014" y="436" text-anchor="middle" fill="#fffdf8">Restore + fill 4</text><text x="1014" y="452" text-anchor="middle" font-size="10" fill="#9de4cb">fill 3 duplicate ignored</text>
+    </g>
+    <g fill="none" stroke="#60707d" stroke-width="2" marker-end="url(#arrow)"><path d="M234 440 H261"/><path d="M365 440 H392"/><path d="M558 440 H585"/><path d="M751 440 H778"/><path d="M882 440 H909"/></g>
+    <rect x="88" y="492" width="1018" height="46" rx="10" fill="#102735" stroke="#9de4cb"/>
+    <text x="105" y="512" font-size="10" font-weight="800" fill="#9de4cb">VERIFIED JOURNAL HEAD · 29a782…</text>
+    <text x="1088" y="512" text-anchor="end" font-size="12" font-weight="800" fill="#fffdf8">STATE B · 91d494…</text>
+    <text x="105" y="528" font-size="10" fill="#9badb6">4 durable events · 3 duplicate deliveries suppressed</text>
+    <text x="1088" y="528" text-anchor="end" font-size="10" fill="#9de4cb">STATE A = STATE B · exact match</text>
+  </g>
+
+  <rect x="60" y="600" width="1080" height="46" rx="12" fill="#f9d7cf"/>
+  <text x="600" y="628" text-anchor="middle" font-family="Inter,Segoe UI,sans-serif" font-size="13" font-weight="800" fill="#671c1c">SCOPE: paper-fill transactions only · pending decisions · model sessions · tournament scheduling · broker state remain outside recovery</text>
+</svg>
